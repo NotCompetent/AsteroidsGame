@@ -13,4 +13,10 @@ class Spaceship extends Floater
   		myPointDirection = 0; //holds current direction the ship is pointing in degrees    
 
     }
+    private void hyperspace(){
+    	myCenterY = Math.random()*550;
+    	myCenterX = Math.random()*550;
+    	myDirectionX = 0;
+  		myDirectionY = 0;
+    }
 }
