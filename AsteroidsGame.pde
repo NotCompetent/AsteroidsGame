@@ -19,6 +19,8 @@ public void draw()
   	fill(135,206,250);
   	stroke(135,206,250);
   	rect(200,100,400,400);
+  	ellipse(200,300,200,400);
+  	ellipse(600,300,200,400);
   	fill(255,255,255);
   	stroke(0,0,0);
   	for(int i = 0; i < willis.length; i++){
