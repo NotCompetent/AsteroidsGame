@@ -7,10 +7,10 @@ class Spaceship extends Floater
   		yCorners = new int[]{-5,5,0,0};   
   		myColor = 0;   
   		myCenterX = 300;
-  		myCenterY = 300; //holds center coordinates   
+  		myCenterY = 300;  
   		myDirectionX = 0;
-  		myDirectionY = 0; //holds x and y coordinates of the vector for direction of travel   
-  		myPointDirection = 0; //holds current direction the ship is pointing in degrees    
+  		myDirectionY = 0;
+  		myPointDirection = 0;  
 
     }
     private void hyperspace(){

@@ -1,16 +1,24 @@
 //your variable declarations here
 Spaceship alice;
 Star willis[];
+Asteroid picchy[];
 public void setup() 
 {
   //your code here
   size(800,600);
   alice = new Spaceship();
   willis = new Star[20];
+  picchy = new Asteroid[20];
   for(int i = 0; i < willis.length; i++){
   	willis[i] = new Star();
   	willis[i].setMyX((int)((Math.random()*400)+200));
   	willis[i].setMyY((int)((Math.random()*400)+100));
+  }
+  for(int i = 0; i < picchy.length; i++){
+  	picchy[i] = new Asteroid();
+  	picchy[i].sizeUp();
+  	picchy[i].myCenterX = ((int)((Math.random()*400)+200));
+  	picchy[i].myCenterY = ((int)((Math.random()*400)+100));
   }
 }
 public void draw() 
@@ -25,6 +33,9 @@ public void draw()
   	stroke(0,0,0);
   	for(int i = 0; i < willis.length; i++){
   		willis[i].show();
+  	}
+  	for(int i = 0; i < picchy.length; i++){
+  		picchy[i].show();
   	}
 	alice.show();
 	alice.move();
