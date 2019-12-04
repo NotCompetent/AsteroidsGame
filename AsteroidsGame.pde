@@ -42,6 +42,7 @@ public void draw()
   	}
   	for(int i = 0; i < picchy.length; i++){
   		picchy[i].show();
+  		picchy[i].move();
   	}
 	alice.show();
 	alice.showHead();
