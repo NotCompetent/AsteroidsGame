@@ -27,4 +27,10 @@ class Spaceship extends Floater
 	    stroke(0,0,0);
 	    fill(255);
     }
+    public float getMyCenterX(){
+    	return (float) myCenterX;
+    }
+    public float getMyCenterY(){
+    	return (float) myCenterY;
+    }
 }
