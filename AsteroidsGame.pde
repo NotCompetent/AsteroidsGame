@@ -1,27 +1,28 @@
 //make fish transparent and adjust x and y
 Spaceship alice;
 Star willis[];
-Asteroid woop;
+ArrayList <Asteroid> picchy;
 public void setup() 
 {
   size(800,600);
   alice = new Spaceship();
   willis = new Star[20];
-  //picchy = new Asteroid();
-  ArrayList <Asteroid> picchy;
   picchy = new ArrayList <Asteroid>();
+  
   for(int i = 0; i < willis.length; i++){
   	willis[i] = new Star();
   	willis[i].setMyX((int)((Math.random()*400)+200));
   	willis[i].setMyY((int)((Math.random()*400)+100));
   }
-  for(int i = 0; i <20; i++){
-  	woop = new Asteroid();
-  	woop.sizeUp();
-  	woop.myCenterX = ((int)((Math.random()*400)+200));
-  	woop.myCenterY = ((int)((Math.random()*400)+100));
+  for(int i = 0; i < 20; i++){
   	picchy.add(new Asteroid());
+  	picchy.get(i).myCenterX = picchy.get(i).getMyCenterX() * (Math.random() * 5);
+  	picchy.get(i).myCenterY = picchy.get(i).getMyCenterY() * (Math.random() * 5);
+  	picchy.get(i).sizeUp();
   }
+
+   	
+  
   
 }
 public void draw() 
@@ -37,19 +38,20 @@ public void draw()
   	fill(255,255,255);
   	for(int i = 0; i < lakeBorderX.length;i++){
   		 	snowBoy(lakeBorderX[i],lakeBorderY[i],0);
-  	}
- 
+
+ 	}
+ 	for(int i = 0; i <picchy.size();i++){
+ 		picchy.get(i).show();
+ 		picchy.get(i).move();
+ 		if(dist((float)picchy.get(i).myCenterX,(float)picchy.get(i).myCenterY,(float)alice.myCenterX,(float)alice.myCenterY)== 20*picchy.get(i).getMyMult() ){
+ 			picchy.remove(i);
+ 		}
+ 	} 
   	stroke(0,0,0);
   	for(int i = 0; i < willis.length; i++){
   		willis[i].show();
   	}
-  	for(int i = 0; i < picchy.size(); i++){
-  		picchy[i].show();
-  		picchy[i].move();
-  		if(dist(alice.getMyCenterX(),alice.getMyCenterY(),picchy[i].getMyCenterX(),picchy[i].getMyCenterX()) == 5*picchy[i].getMyMult()){
-  			picchy.remove(i);
-  		}
-  	}
+  	
 	alice.show();
 	alice.showHead();
 	alice.move();
