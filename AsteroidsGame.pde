@@ -43,8 +43,12 @@ public void draw()
  	for(int i = 0; i <picchy.size();i++){
  		picchy.get(i).show();
  		picchy.get(i).move();
- 		if(dist((float)picchy.get(i).myCenterX,(float)picchy.get(i).myCenterY,(float)alice.myCenterX,(float)alice.myCenterY)== 20*picchy.get(i).getMyMult() ){
+ 		if(dist(picchy.get(i).getMyCenterX(),picchy.get(i).getMyCenterY(),alice.getMyCenterX(),alice.getMyCenterY()) < 4*picchy.get(i).getMyMult() ){
  			picchy.remove(i);
+ 			picchy.add(new Asteroid());
+		  	picchy.get(picchy.size()-1).myCenterX = picchy.get(i).getMyCenterX() * (Math.random() * 5);
+		  	picchy.get(picchy.size()-1).myCenterY = picchy.get(i).getMyCenterY() * (Math.random() * 5);
+		  	picchy.get(picchy.size()-1).sizeUp();
  		}
  	} 
   	stroke(0,0,0);
