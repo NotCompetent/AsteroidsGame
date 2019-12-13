@@ -6,7 +6,7 @@ public void setup()
 {
   size(800,600);
   alice = new Spaceship();
-  willis = new Star[20];
+  willis = new Star[40];
   picchy = new ArrayList <Asteroid>();
   
   for(int i = 0; i < willis.length; i++){
