@@ -36,6 +36,9 @@ public void draw()
   	ellipse(100,300,150,500);
   	ellipse(700,300,150,500);
   	fill(255,255,255);
+  	for(int i = 0; i < willis.length; i++){
+  		willis[i].show();
+  	}
   	for(int i = 0; i < lakeBorderX.length;i++){
   		 	snowBoy(lakeBorderX[i],lakeBorderY[i],0);
 
@@ -52,9 +55,7 @@ public void draw()
  		}
  	} 
   	stroke(0,0,0);
-  	for(int i = 0; i < willis.length; i++){
-  		willis[i].show();
-  	}
+  	
   	
 	alice.show();
 	alice.showHead();
