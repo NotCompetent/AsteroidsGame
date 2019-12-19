@@ -2,12 +2,14 @@
 Spaceship alice;
 Star willis[];
 ArrayList <Asteroid> picchy;
+ArrayList <Bullet> fuwa;
 public void setup() 
 {
   size(800,600);
   alice = new Spaceship();
   willis = new Star[40];
   picchy = new ArrayList <Asteroid>();
+  fuwa = new ArrayList <Bullet>();
   
   for(int i = 0; i < willis.length; i++){
   	willis[i] = new Star();
@@ -19,6 +21,10 @@ public void setup()
   	picchy.get(i).myCenterX = picchy.get(i).getMyCenterX() * (Math.random() * 5);
   	picchy.get(i).myCenterY = picchy.get(i).getMyCenterY() * (Math.random() * 5);
   	picchy.get(i).sizeUp();
+  }
+  for(int i = 0; i < 1; i++){
+     fuwa.add(new Bullet(alice)); 
+     fuwa.get(i).accelerate(6);
   }
 
    	
@@ -53,6 +59,7 @@ public void draw()
 		  	picchy.get(picchy.size()-1).myCenterY = picchy.get(i).getMyCenterY() * (Math.random() * 5);
 		  	picchy.get(picchy.size()-1).sizeUp();
  		}
+   
  	} 
   	stroke(0,0,0);
   	
@@ -60,6 +67,25 @@ public void draw()
 	alice.show();
 	alice.showHead();
 	alice.move();
+  for(int j = 0; j < fuwa.size(); j++){
+      fuwa.get(j).show(); 
+      fuwa.get(j).move();
+      if(fuwa.get(j).getMyCenterX() == 0){
+         fuwa.remove(j); 
+         break;
+      }
+      if(fuwa.get(j).getMyCenterY() == 0){
+         fuwa.remove(j); 
+         break;
+      }
+      for(int i = 0; i <picchy.size();i++){
+        if(dist(picchy.get(i).getMyCenterX(),picchy.get(i).getMyCenterY(),fuwa.get(j).getMyCenterX(),fuwa.get(j).getMyCenterY()) < 2*picchy.get(i).getMyMult() ){
+          picchy.remove(i);
+          fuwa.remove(j);
+          break;
+        }
+      }
+   }
 }
 public void keyPressed(){
 	if(key == 'a'){
@@ -81,6 +107,10 @@ public void keyPressed(){
 	if(key == 'r'){
 		alice.hyperspace();
 	}
+  if(key == 'f'){
+    fuwa.add(new Bullet(alice)); 
+    fuwa.get(fuwa.size()-1).accelerate(6);
+  }
 }
 
 public void snowBoy(int x,int y,int turn){
